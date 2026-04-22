@@ -24,19 +24,19 @@ export function WeeklyChart() {
                 <div
                   className={`w-full rounded-t-lg transition-all duration-500 ${
                     isToday
-                      ? 'bg-gradient-to-t from-cyan-500 to-blue-500 shadow-lg shadow-blue-500/30'
-                      : 'bg-gradient-to-t from-gray-700 to-gray-600'
+                      ? 'bg-gradient-to-t from-primary to-orange-400 shadow-lg shadow-primary/20'
+                      : 'bg-secondary'
                   }`}
                   style={{ height: `${height}%` }}
                 >
                   {isToday && (
                     <div className="w-full h-full flex items-start justify-center pt-2">
-                      <span className="text-xs">{item.score}</span>
+                      <span className="text-[10px] font-bold text-primary-foreground">{item.score}</span>
                     </div>
                   )}
                 </div>
               </div>
-              <span className={`text-xs ${isToday ? 'text-white' : 'text-gray-500'}`}>
+              <span className={`text-[10px] font-bold uppercase tracking-wider ${isToday ? 'text-primary' : 'text-muted-foreground'}`}>
                 {item.day}
               </span>
             </div>

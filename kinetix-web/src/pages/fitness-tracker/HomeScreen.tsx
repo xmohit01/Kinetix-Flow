@@ -1,185 +1,164 @@
 import { useNavigate } from 'react-router-dom';
-import { Camera, TrendingUp, Zap, Award, Activity } from 'lucide-react';
-import { WeeklyChart } from '../../components/fitness-tracker/WeeklyChart';
-import { ExerciseCard } from '../../components/fitness-tracker/ExerciseCard';
-import { MetricCard } from '../../components/fitness-tracker/MetricCard';
-import { CircularProgress } from '../../components/fitness-tracker/CircularProgress';
+import { Bell, Flame, ChevronRight, Activity, Zap, Clock, Dumbbell, Shield, Target } from 'lucide-react';
 import { BottomNav } from '../../components/fitness-tracker/BottomNav';
+import { triggerHaptic } from '../../utils/premiumEffects';
 
 export default function HomeScreen() {
   const navigate = useNavigate();
 
+  const handleNav = (path: string, state?: any) => {
+    triggerHaptic('light');
+    navigate(path, { state });
+  };
+
+  const handleFindMatch = () => {
+    triggerHaptic('heavy');
+    const exercises = ['Squats', 'Push-ups', 'Planks', 'Shoulder Press'];
+    const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+    navigate(`/workout-tracking?exercise=${randomExercise}`);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a0e1a] via-[#0f1420] to-[#0a0e1a] text-white">
-      <div className="max-w-md mx-auto px-4 py-6 pb-24">
+    <div className="min-h-screen bg-background text-foreground pb-28">
+      <div className="max-w-md mx-auto px-5 py-6">
         {/* Header */}
-        <div className="mb-8">
-          <p className="text-sm text-gray-400 mb-1">Good evening</p>
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl">Alex Rivera</h1>
-            <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-              <span className="text-xs text-emerald-400">AI active</span>
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden bg-secondary">
+              {/* Placeholder for user avatar */}
+              <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile" className="w-full h-full object-cover" />
             </div>
-          </div>
-        </div>
-
-        {/* Hero Card - Today's Cardio Score */}
-        <div className="mb-5 bg-gradient-to-br from-[#1a1f35] to-[#141826] rounded-3xl p-6 border border-gray-800/50 shadow-2xl">
-          <p className="text-sm text-gray-400 mb-3">Today's Cardio Score</p>
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-baseline gap-2">
-              <h2 className="text-5xl">82</h2>
-              <span className="text-xl text-gray-500">/100</span>
-            </div>
-            <CircularProgress value={82} size={64} />
-          </div>
-
-          <div className="flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-3 py-2.5 rounded-xl">
-            <Zap className="w-4 h-4 text-blue-400" />
-            <p className="text-sm text-blue-300">Posture improved 12% this week</p>
-          </div>
-        </div>
-
-        {/* Start Workout CTA */}
-        <button
-          onClick={() => navigate('/workout')}
-          className="w-full mb-5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 rounded-2xl p-4 flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.01] active:scale-[0.99]"
-        >
-          <Camera className="w-5 h-5" />
-          <span className="text-base">Start Workout</span>
-        </button>
-
-        {/* Consistency Section */}
-        <div className="mb-5 bg-gradient-to-br from-[#1a1f35] to-[#141826] rounded-2xl p-5 border border-gray-800/50 shadow-xl">
-          <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-sm text-gray-400 mb-1">Workout Streak</p>
-              <div className="flex items-baseline gap-2">
-                <h3 className="text-3xl">3</h3>
-                <span className="text-base text-gray-400">days</span>
-              </div>
-            </div>
-            <div className="bg-orange-500/10 p-3 rounded-xl border border-orange-500/20">
-              <Activity className="w-6 h-6 text-orange-400" />
+              <p className="text-sm text-muted-foreground font-medium">Welcome back</p>
+              <h1 className="text-base font-bold">Alex Rivera</h1>
             </div>
           </div>
+          <div className="flex items-center gap-3">
+            <button className="text-muted-foreground hover:text-foreground transition-colors">
+              <Bell className="w-6 h-6" strokeWidth={1.5} />
+            </button>
+            <div className="flex items-center gap-1.5 bg-card border border-border px-3 py-1.5 rounded-xl">
+              <Flame className="w-4 h-4 text-primary" strokeWidth={2} />
+              <span className="text-sm font-bold">21</span>
+            </div>
+          </div>
+        </div>
 
-          <div className="flex gap-1.5">
-            {[85, 70, 90, 65, 80, 75, 82].map((value, index) => (
-              <div key={index} className="flex-1 flex items-end h-14 bg-gray-800/30 rounded-lg p-1">
-                <div
-                  className="w-full rounded-sm bg-gradient-to-t from-cyan-500 to-blue-500"
-                  style={{ height: `${value}%` }}
-                ></div>
-              </div>
+        {/* Hero Banner (Sage Green) */}
+        <div className="bg-[#557A64] rounded-[2rem] p-6 mb-8 relative overflow-hidden text-white shadow-xl">
+          <div className="relative z-10 w-[85%]">
+            <h2 className="font-serif text-3xl font-bold leading-tight mb-3">
+              Not sure <span className="italic font-light">what</span><br/>
+              you want to <span className="italic font-light">train</span><br/>
+              today?
+            </h2>
+            <p className="text-sm text-white/80 mb-6 font-medium leading-relaxed">
+              Tell us how you feel, we'll recommend workouts matching your energy & mood.
+            </p>
+            <button 
+              onClick={handleFindMatch}
+              className="bg-white text-black font-bold py-3.5 px-6 rounded-full w-full active:scale-95 transition-transform"
+            >
+              Find my match
+            </button>
+          </div>
+          {/* Decorative Element */}
+          <div className="absolute top-6 right-4 text-4xl transform rotate-12">
+            🌞
+          </div>
+        </div>
+
+        {/* Categories */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-serif text-xl font-bold">Categories</h3>
+            <button className="text-sm text-muted-foreground flex items-center gap-1 font-medium hover:text-primary">
+              See all <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+          
+          <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+            {[
+              { id: 'arms', name: 'Upper Body', icon: Dumbbell },
+              { id: 'legs', name: 'Lower Body', icon: Zap },
+              { id: 'core', name: 'Core', icon: Target },
+              { id: 'all', name: 'Full Body', icon: Activity },
+            ].map((category) => (
+              <button 
+                key={category.name}
+                onClick={() => handleNav('/workout-select', { category: category.id })}
+                className="flex-shrink-0 w-24 h-24 bg-card rounded-2xl flex flex-col items-center justify-center gap-2 border border-border active:scale-95 transition-transform"
+              >
+                <category.icon className="w-7 h-7 text-muted-foreground" strokeWidth={1.5} />
+                <span className="text-xs font-medium text-muted-foreground">{category.name}</span>
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="mb-5 grid grid-cols-2 gap-3">
-          <MetricCard label="Reps Completed" value="284" icon="target" />
-          <MetricCard label="Exercises" value="12" icon="activity" />
-          <MetricCard label="Calories" value="1,847" unit="kcal" icon="zap" />
-          <MetricCard label="BMI" value="22.4" subValue="165 lbs" icon="trending" />
-        </div>
-
-        {/* Exercise Cards */}
-        <div className="mb-5">
-          <h3 className="text-base mb-3 text-gray-400">Recent Exercises</h3>
-          <div className="space-y-3">
-            <ExerciseCard
-              name="Squats"
-              reps={45}
-              accuracy={94}
-              gradient="from-purple-500/20 to-pink-500/20"
-              borderColor="border-purple-500/30"
-            />
-            <ExerciseCard
-              name="Push-ups"
-              reps={32}
-              accuracy={88}
-              gradient="from-blue-500/20 to-cyan-500/20"
-              borderColor="border-blue-500/30"
-            />
-            <ExerciseCard
-              name="Jumping Jacks"
-              reps={60}
-              accuracy={91}
-              gradient="from-emerald-500/20 to-teal-500/20"
-              borderColor="border-emerald-500/30"
-            />
-          </div>
-        </div>
-
-        {/* AI Coach Section */}
-        <div className="mb-5 bg-gradient-to-br from-[#1a1f35] to-[#141826] rounded-2xl p-5 border border-gray-800/50 shadow-xl">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-gradient-to-br from-cyan-500 to-blue-600 p-2.5 rounded-xl">
-              <Zap className="w-5 h-5" />
-            </div>
-            <h3 className="text-base">AI Coach</h3>
-          </div>
-
-          <div className="space-y-3">
-            <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-              <p className="text-xs text-blue-400 mb-1.5">Posture Correction</p>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                Keep your back straight during squats. Your form improved 15% today!
-              </p>
-            </div>
-            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
-              <p className="text-xs text-emerald-400 mb-1.5">Performance Tip</p>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                Try increasing push-up depth by 2 inches for better activation.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Weekly Progress Chart */}
-        <div className="mb-5 bg-gradient-to-br from-[#1a1f35] to-[#141826] rounded-2xl p-5 border border-gray-800/50 shadow-xl">
+        {/* Your Progress */}
+        <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-base">Weekly Progress</h3>
-            <div className="flex items-center gap-1 text-emerald-400 text-sm">
-              <TrendingUp className="w-4 h-4" />
-              <span>+18%</span>
-            </div>
-          </div>
-          <WeeklyChart />
-        </div>
-
-        {/* Achievements */}
-        <div className="bg-gradient-to-br from-[#1a1f35] to-[#141826] rounded-2xl p-5 border border-gray-800/50 shadow-xl">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-2.5 rounded-xl">
-              <Award className="w-5 h-5" />
-            </div>
-            <h3 className="text-base">Achievements</h3>
+            <h3 className="font-serif text-xl font-bold">Your progress</h3>
+            <button 
+              onClick={() => handleNav('/stats')}
+              className="text-sm text-muted-foreground flex items-center gap-1 font-medium hover:text-primary"
+            >
+              See activity <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-xl p-4 flex flex-col items-center gap-2">
-              <div className="bg-amber-500/20 p-2 rounded-lg">
-                <Activity className="w-5 h-5 text-amber-400" />
+          <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+            {/* Steps Card */}
+            <div className="flex-shrink-0 w-36 h-36 bg-card rounded-3xl p-4 border border-border flex flex-col justify-between">
+              <div className="relative w-10 h-10">
+                <svg className="w-full h-full transform -rotate-90">
+                  <circle cx="20" cy="20" r="16" stroke="var(--border)" strokeWidth="3" fill="none" />
+                  <circle cx="20" cy="20" r="16" stroke="var(--primary)" strokeWidth="3" fill="none" strokeDasharray="100" strokeDashoffset="25" strokeLinecap="round" />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Activity className="w-4 h-4 text-primary" />
+                </div>
               </div>
-              <p className="text-xs text-center text-gray-300 leading-tight">3 Day Streak</p>
+              <div>
+                <p className="text-xl font-bold">3,548 <span className="text-xs font-medium text-muted-foreground">steps</span></p>
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-xl p-4 flex flex-col items-center gap-2">
-              <div className="bg-blue-500/20 p-2 rounded-lg">
-                <Zap className="w-5 h-5 text-blue-400" />
+
+            {/* Calories Card */}
+            <div className="flex-shrink-0 w-36 h-36 bg-card rounded-3xl p-4 border border-border flex flex-col justify-between">
+              <div className="relative w-10 h-10">
+                <svg className="w-full h-full transform -rotate-90">
+                  <circle cx="20" cy="20" r="16" stroke="var(--border)" strokeWidth="3" fill="none" />
+                  <circle cx="20" cy="20" r="16" stroke="var(--primary)" strokeWidth="3" fill="none" strokeDasharray="100" strokeDashoffset="60" strokeLinecap="round" />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Flame className="w-4 h-4 text-primary" />
+                </div>
               </div>
-              <p className="text-xs text-center text-gray-300 leading-tight">100 Workouts</p>
+              <div>
+                <p className="text-xl font-bold">273 <span className="text-xs font-medium text-muted-foreground">kcal</span></p>
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-4 flex flex-col items-center gap-2">
-              <div className="bg-purple-500/20 p-2 rounded-lg">
-                <Award className="w-5 h-5 text-purple-400" />
+
+            {/* Time Card */}
+            <div className="flex-shrink-0 w-36 h-36 bg-card rounded-3xl p-4 border border-border flex flex-col justify-between">
+              <div className="relative w-10 h-10">
+                <svg className="w-full h-full transform -rotate-90">
+                  <circle cx="20" cy="20" r="16" stroke="var(--border)" strokeWidth="3" fill="none" />
+                  <circle cx="20" cy="20" r="16" stroke="var(--primary)" strokeWidth="3" fill="none" strokeDasharray="100" strokeDashoffset="10" strokeLinecap="round" />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Clock className="w-4 h-4 text-primary" />
+                </div>
               </div>
-              <p className="text-xs text-center text-gray-300 leading-tight">Perfect Form</p>
+              <div>
+                <p className="text-xl font-bold">1h 5m <span className="text-xs font-medium text-muted-foreground">activity</span></p>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <BottomNav />

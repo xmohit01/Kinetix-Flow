@@ -25,18 +25,18 @@ export const calculateDistance = (a, b) => {
 };
 
 /**
- * Returns a color on a gradient from Red to Green based on progress (0.0 - 1.0).
+ * Returns a color on a gradient based on progress (0.0 - 1.0) using warm elegant tones.
  */
 export const getRepProgressColor = (progress) => {
     // Clamp progress between 0 and 1
     const p = Math.max(0, Math.min(1, progress));
 
-    // Red: 255, 0, 0
-    // Green: 57, 255, 20 (#39FF14)
+    // Start: Gray/Muted (107, 114, 128)
+    // End: Warm Orange/Coral (234, 88, 12)
 
-    const r = Math.round(255 + (57 - 255) * p);
-    const g = Math.round(0 + (255 - 0) * p);
-    const b = Math.round(0 + (20 - 0) * p);
+    const r = Math.round(107 + (234 - 107) * p);
+    const g = Math.round(114 + (88 - 114) * p);
+    const b = Math.round(128 + (12 - 128) * p);
 
     return `rgb(${r}, ${g}, ${b})`;
 };

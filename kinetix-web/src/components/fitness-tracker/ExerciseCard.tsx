@@ -8,21 +8,21 @@ interface ExerciseCardProps {
 
 export function ExerciseCard({ name, reps, accuracy, gradient, borderColor }: ExerciseCardProps) {
   return (
-    <div className={`bg-gradient-to-br ${gradient} border ${borderColor} rounded-xl p-4`}>
+    <div className={`bg-card border border-border rounded-2xl p-4 shadow-sm`}>
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h4 className="text-base mb-0.5">{name}</h4>
-          <p className="text-sm text-gray-400">{reps} reps completed</p>
+          <h4 className="text-base font-bold mb-0.5">{name}</h4>
+          <p className="text-sm text-muted-foreground">{reps} reps completed</p>
         </div>
         <div className="text-right">
-          <p className="text-2xl">{accuracy}%</p>
-          <p className="text-xs text-gray-400">accuracy</p>
+          <p className="text-2xl font-bold text-primary">{accuracy}%</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">accuracy</p>
         </div>
       </div>
 
-      <div className="relative w-full h-2 bg-gray-800/50 rounded-full overflow-hidden">
+      <div className="relative w-full h-2 bg-secondary rounded-full overflow-hidden">
         <div
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all duration-500"
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-orange-400 rounded-full transition-all duration-500"
           style={{ width: `${accuracy}%` }}
         ></div>
       </div>
