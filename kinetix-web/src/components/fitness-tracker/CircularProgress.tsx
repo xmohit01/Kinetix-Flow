@@ -15,15 +15,16 @@ export function CircularProgress({ value, size = 60 }: CircularProgressProps) {
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="rgba(55, 65, 81, 0.3)"
+          stroke="var(--border)"
           strokeWidth="4"
           fill="none"
+          className="opacity-20"
         />
         <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="url(#gradient)"
+          stroke="url(#progress-gradient)"
           strokeWidth="4"
           fill="none"
           strokeDasharray={circumference}
@@ -32,13 +33,13 @@ export function CircularProgress({ value, size = 60 }: CircularProgressProps) {
           className="transition-all duration-500"
         />
         <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06b6d4" />
-            <stop offset="100%" stopColor="#3b82f6" />
+          <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--primary)" />
+            <stop offset="100%" stopColor="#ef4444" />
           </linearGradient>
         </defs>
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center text-xs">
+      <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold">
         {value}%
       </div>
     </div>

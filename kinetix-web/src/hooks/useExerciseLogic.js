@@ -5,7 +5,7 @@ export const useExerciseLogic = (landmarks, activeExercise) => {
     const [stats, setStats] = useState({
         repCount: 0,
         feedback: "Assume Starting Position",
-        instruction: "Stand by for tactical analysis",
+        instruction: "Stand by for tracking",
         progress: 0,
         formQuality: 100,
         timer: 0,

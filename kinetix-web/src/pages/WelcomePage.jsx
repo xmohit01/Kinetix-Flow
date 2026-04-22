@@ -55,7 +55,7 @@ const WelcomePage = () => {
         {
             icon: <Shield className="w-8 h-8 text-neon-cyan mb-4" />,
             title: 'Privacy First',
-            description: '100% of the AI processing happens right in your browser. No video is ever recorded or sent to a server.',
+            description: '100% of the processing happens right in your browser. No video is ever recorded or sent to a server.',
         },
     ];
 
@@ -98,7 +98,7 @@ const WelcomePage = () => {
                     </div>
 
                     <h2 className="text-2xl md:text-4xl font-semibold mb-6 max-w-3xl leading-tight text-white">
-                        Elevate Your Workout with <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-green italic">Real-Time AI</span> Form Correction
+                        Elevate Your Workout with <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-green italic">Real-Time</span> Form Correction
                     </h2>
 
                     <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl">
@@ -141,7 +141,7 @@ const WelcomePage = () => {
                         </div>
                         <div className="text-center">
                             <div className="text-3xl md:text-4xl font-black text-neon-cyan mb-2">24/7</div>
-                            <div className="text-sm uppercase tracking-widest text-slate-400 font-bold">AI Availability</div>
+                            <div className="text-sm uppercase tracking-widest text-slate-400 font-bold">Tracker Availability</div>
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@ const WelcomePage = () => {
                             Democratizing Personal Fitness
                         </h2>
                         <p className="text-lg text-slate-400 leading-relaxed">
-                            We believe elite personal training shouldn't be a luxury. We want to bring real-time, AI-powered form correction to everyone, anywhere. No expensive equipment, no pricey trainers—just your webcam and Kinetix.
+                            We believe elite personal training shouldn't be a luxury. We want to bring real-time form correction to everyone, anywhere. No expensive equipment, no pricey trainers—just your webcam and Kinetix.
                         </p>
                     </div>
                     <div className="lg:w-1/2 relative group">
@@ -179,7 +179,7 @@ const WelcomePage = () => {
                             <Shield className="w-4 h-4" /> The Technology
                         </h3>
                         <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                            AI Powered, Privacy First
+                            Performance Powered, Privacy First
                         </h2>
                         <p className="text-lg text-slate-400 leading-relaxed">
                             Using state-of-the-art MediaPipe Machine Learning models, Kinetix analyzes 33 3D body landmarks at 30 frames per second. Because all processing happens directly in your browser, your video feed never touches a server.
@@ -264,7 +264,7 @@ const WelcomePage = () => {
                                 <User className="w-8 h-8 text-neon-green" />
                             </div>
                             <h4 className="text-2xl font-bold text-white mb-3">Step Back</h4>
-                            <p className="text-slate-400 leading-relaxed">Position yourself so the AI can track your full body in the frame for accurate detection.</p>
+                            <p className="text-slate-400 leading-relaxed">Position yourself so the tracker can see your full body in the frame for accurate detection.</p>
                         </div>
                     </div>
 
@@ -275,7 +275,7 @@ const WelcomePage = () => {
                                 <TrendingUp className="w-8 h-8 text-neon-cyan" />
                             </div>
                             <h4 className="text-2xl font-bold text-white mb-3">Level Up</h4>
-                            <p className="text-slate-400 leading-relaxed">Perform your workout while our AI counts reps and corrects form in real-time.</p>
+                            <p className="text-slate-400 leading-relaxed">Perform your workout while our tracker counts reps and corrects form in real-time.</p>
                         </div>
                     </div>
                 </div>
@@ -285,7 +285,7 @@ const WelcomePage = () => {
             <section className="max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-white">Supported Exercises</h2>
-                    <p className="text-slate-400 mt-4">Our AI is trained on a wide variety of movements.</p>
+                    <p className="text-slate-400 mt-4">Our tracker is trained on a wide variety of movements.</p>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-4">
@@ -302,7 +302,7 @@ const WelcomePage = () => {
                 <div className="absolute inset-0 bg-neon-green/5 blur-[120px] rounded-full"></div>
                 <div className="relative z-10">
                     <h2 className="text-5xl md:text-7xl font-black text-white mb-8">
-                        Your Personal AI Trainer <br /> Is Waiting.
+                        Your Personal Trainer <br /> Is Waiting.
                     </h2>
                     <button
                         onClick={() => navigate('/dashboard')}
@@ -331,7 +331,7 @@ const WelcomePage = () => {
                     </div>
                     <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
                         <h4 className="text-xl font-bold text-white mb-3 italic text-neon-cyan">Do I need a special camera?</h4>
-                        <p className="text-slate-400 leading-relaxed">No! Any standard laptop or phone webcam works perfectly. Our AI is trained to adapt to various lighting and angles.</p>
+                        <p className="text-slate-400 leading-relaxed">No! Any standard laptop or phone webcam works perfectly. Our tracker adapts to various lighting and angles.</p>
                     </div>
                     <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
                         <h4 className="text-xl font-bold text-white mb-3 italic text-neon-cyan">Which exercises are supported?</h4>
@@ -380,7 +380,7 @@ const WelcomePage = () => {
                                 <span className="text-xl font-black tracking-tighter text-white">KINETIX</span>
                             </div>
                             <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                                Elevating fitness through real-time AI form correction. 100% private, 100% browser-based.
+                                Elevating fitness through real-time form correction. 100% private, 100% browser-based.
                             </p>
                             <div className="text-xs text-slate-500 font-medium">
                                 © {new Date().getFullYear()} Kinetix. All rights reserved.

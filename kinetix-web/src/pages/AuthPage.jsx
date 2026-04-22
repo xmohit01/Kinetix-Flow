@@ -76,7 +76,7 @@ const AuthPage = () => {
                         {isLogin ? 'Welcome Back' : 'Create Account'}
                     </h2>
                     <p className="text-slate-400 mt-2 text-center text-sm md:text-base">
-                        {isLogin ? 'Enter your details to access your AI trainer' : 'Join the revolution in AI-powered fitness'}
+                        {isLogin ? 'Enter your details to access your tracker' : 'Join the revolution in advanced fitness'}
                     </p>
                 </div>
 
@@ -163,7 +163,7 @@ const AuthPage = () => {
                 {/* Footer Quote */}
                 <div className="mt-10 pt-6 border-t border-white/5 text-center">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-slate-600 font-medium">
-                        Securely processed by Kinetix AI
+                        Securely processed by Kinetix
                     </p>
                 </div>
             </div>
