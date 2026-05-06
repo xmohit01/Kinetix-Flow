@@ -63,7 +63,11 @@ const loginUser = async (req, res) => {
 
 // Helper: Generate JWT
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET || 'kinetix_secret_123', {
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+        throw new Error('JWT_SECRET is not defined in environment variables');
+    }
+    return jwt.sign({ id }, secret, {
         expiresIn: '30d'
     });
 };
